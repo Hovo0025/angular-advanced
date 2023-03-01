@@ -1,0 +1,10 @@
+<h1>Secured Admin Area</h1>
+<section style="margin-bottom: 15px">
+  <h5>Actions:</h5>
+  <a [routerLink]="['add-user']" [routerLinkActive]="'active'" mat-button>Add user</a>
+  <a [routerLink]="['add-product']" [routerLinkActive]="'active'" mat-button style="margin-left: 1rem">Add product</a>
+  <a [routerLink]="['list']" [routerLinkActive]="'active'" mat-button style="margin-left: 1rem">Show list</a>
+</section>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
