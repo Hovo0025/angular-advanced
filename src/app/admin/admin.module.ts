@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ListComponent } from './list/list.component';
 import { MatTableModule } from '@angular/material/table';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -25,5 +26,6 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
   ],
   declarations: [WelcomeComponent, AddUserComponent, AddProductComponent, ListComponent],
+  entryComponents: [ConfirmDialogComponent],
 })
 export class AdminModule {}

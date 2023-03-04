@@ -12,6 +12,6 @@ export class AuthService {
 
   hasPermission(): Observable<boolean> {
     console.log('I am checking permission...');
-    return of(false);
+    return of(true);
   }
 }
