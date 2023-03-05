@@ -1,0 +1,9 @@
+<ng-container *ngIf="(users$ | async) as users">
+  <div *ngFor="let user of users" class="user-list">
+    <div style="flex-grow: 1">
+      <h5>{{user.name}}</h5>
+      <h5>{{user.email}}</h5>
+    </div>
+    <a mat-stroked-button [routerLink]="['user', user.id]">Details</a>
+  </div>
+</ng-container>
