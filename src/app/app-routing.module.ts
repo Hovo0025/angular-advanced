@@ -7,7 +7,7 @@ import { AuthPreloadStrategy } from './auth/auth-preload-strategy';
 const routes: Routes = [
   {
     path: 'admin',
-    // canLoad: [LoadGuard],
+    canLoad: [LoadGuard],
     loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
   },
   {
