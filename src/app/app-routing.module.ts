@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserListComponent } from './user/components/user-list/user-list.component';
-import { UserComponent } from './user/components/user/user.component';
-import { UserResolver } from './user/user.resolver';
+
+import { UserSidebarComponent } from './user/user-sidebar.component';
+import { UserDetailsComponent } from './user/user-details.component';
+import { PhotosDetailsComponent } from './photos/photos-details.component';
+import { PhotosSidebarComponent } from './photos/photos-sidebar.component';
+import { PhotosPageComponent } from './photos/photos-page/photos-page.component';
 
 const routes: Routes = [
-  { path: '', component: UserListComponent },
+  { path: '', redirectTo: 'users', pathMatch: 'full' },
   {
-    path: 'user/:id',
-    resolve: { user: UserResolver },
-    component: UserComponent,
+    path: 'users',
+    component: UserSidebarComponent,
   },
+  { path: 'user/:id', outlet: 'details', component: UserDetailsComponent },
+  {
+    path: 'photos',
+    component: PhotosSidebarComponent,
+  },
+  { path: 'photo/:id', outlet: 'details', component: PhotosDetailsComponent },
 ];
 
 @NgModule({

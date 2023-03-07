@@ -4,23 +4,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { UserDetailsComponent } from './user/user-details.component';
+import { UserSidebarComponent } from './user/user-sidebar.component';
+import { PhotosDetailsComponent } from './photos/photos-details.component';
+import { PhotosSidebarComponent } from './photos/photos-sidebar.component';
+import { PhotosPageComponent } from './photos/photos-page/photos-page.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    PhotosPageComponent,
+    UserSidebarComponent,
+    UserDetailsComponent,
+    PhotosDetailsComponent,
+    PhotosSidebarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    UserModule,
     MatToolbarModule,
     MatButtonModule,
-    MatProgressBarModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
