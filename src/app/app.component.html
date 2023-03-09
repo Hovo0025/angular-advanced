@@ -18,6 +18,9 @@
     <router-outlet></router-outlet>
   </aside>
   <section class="details">
-    <router-outlet name="details"></router-outlet>
+    <router-outlet [name]="'details'"
+                   (activate)="isButtonVisible = true"
+                   (deactivate)="isButtonVisible = false"></router-outlet>
+    <a mat-button *ngIf="isButtonVisible" [routerLink]="['', {outlets: {details: null}}]">Close</a>
   </section>
 </main>

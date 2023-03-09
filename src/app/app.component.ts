@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   isLoading$!: Observable<boolean | unknown>;
   showLoaderEvents$!: Observable<boolean>;
   hideLoaderEvent$!: Observable<boolean>;
+  isButtonVisible = false;
   constructor(private readonly router: Router) {}
 
   ngOnInit(): void {

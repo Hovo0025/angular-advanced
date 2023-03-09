@@ -11,12 +11,10 @@ import { UserDetailsComponent } from './user/user-details.component';
 import { UserSidebarComponent } from './user/user-sidebar.component';
 import { PhotosDetailsComponent } from './photos/photos-details.component';
 import { PhotosSidebarComponent } from './photos/photos-sidebar.component';
-import { PhotosPageComponent } from './photos/photos-page/photos-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhotosPageComponent,
     UserSidebarComponent,
     UserDetailsComponent,
     PhotosDetailsComponent,
