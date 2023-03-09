@@ -1,10 +1,12 @@
 .content {
-  min-height: calc(100vh - 64px);
-  display: flex;
+  height: calc(100vh - 64px);
+  padding: 20px;
+  box-sizing: border-box;
+}
+.title {
+  margin-right: 20px;
 }
 .active {
-  border-color: #fff;
-}
-a {
-  margin-left: 15px;
+  color: white;
+  border: 1px solid white;
 }

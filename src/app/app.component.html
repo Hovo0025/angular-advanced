@@ -1,26 +1,20 @@
-<header>
-  <mat-toolbar color="primary">
-    <a
-      mat-stroked-button
-      routerLinkActive="active"
-      routerLink="users"
-      class="nav-link"
-    >Users</a
-    >
-    <a mat-stroked-button routerLinkActive="active" routerLink="photos"
-    >Photos</a
-    >
-  </mat-toolbar>
-</header>
-
+<mat-toolbar color="primary">
+  <img class="logo" width="70" src="https://www.decodedfrontend.io/wp-content/uploads/2021/01/icon.png" alt="Decoded Frontend">
+  <span class="title">Router Features in Angular 14</span>
+  <a mat-button
+     routerLink="/"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }"
+  >Home</a>
+  <a mat-button
+     routerLink="/users"
+     routerLinkActive="active"
+  >Users</a>
+  <a mat-button
+     routerLink="/admin"
+     routerLinkActive="active"
+  >Admin</a>
+</mat-toolbar>
 <main class="content">
-  <aside class="sidebar">
-    <router-outlet></router-outlet>
-  </aside>
-  <section class="details">
-    <router-outlet [name]="'details'"
-                   (activate)="isButtonVisible = true"
-                   (deactivate)="isButtonVisible = false"></router-outlet>
-    <a mat-button *ngIf="isButtonVisible" [routerLink]="['', {outlets: {details: null}}]">Close</a>
-  </section>
+  <router-outlet></router-outlet>
 </main>

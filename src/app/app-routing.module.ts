@@ -1,23 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { UserSidebarComponent } from './user/user-sidebar.component';
-import { UserDetailsComponent } from './user/user-details.component';
-import { PhotosDetailsComponent } from './photos/photos-details.component';
-import { PhotosSidebarComponent } from './photos/photos-sidebar.component';
+import { HomeContainerComponent } from './feature/home/home-container/home-container.component';
+import { UserLoaderService } from './feature/users/user-loader.service';
+import { ExperimentalUserLoaderService } from './feature/users/experimental-user-loader.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'users', pathMatch: 'full' },
+  {
+    path: '',
+    component: HomeContainerComponent,
+  },
   {
     path: 'users',
-    component: UserSidebarComponent,
+    loadChildren: () => import('./feature/users/users.module').then((m) => m.UsersModule),
   },
-  { path: 'user/:id', outlet: 'details', component: UserDetailsComponent },
   {
-    path: 'photos',
-    component: PhotosSidebarComponent,
+    path: 'admin',
+    providers: [
+      {
+        provide: UserLoaderService,
+        useExisting: ExperimentalUserLoaderService,
+      },
+    ],
+    loadComponent: () => import('./feature/admin/admin.component').then((c) => c.AdminComponent),
   },
-  { path: 'photo/:id', outlet: 'details', component: PhotosDetailsComponent },
 ];
 
 @NgModule({
