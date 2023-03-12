@@ -1,28 +1,37 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeContainerComponent } from './feature/home/home-container/home-container.component';
-import { UserLoaderService } from './feature/users/user-loader.service';
-import { ExperimentalUserLoaderService } from './feature/users/experimental-user-loader.service';
+import { inject, NgModule } from '@angular/core';
+import { Router, RouterModule, Routes } from '@angular/router';
+
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { UserPermissionsService } from './utils/user-permissions.service';
+import { CanMatchGuard } from './canMatch.service';
+import { map } from 'rxjs';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   {
-    path: '',
-    component: HomeContainerComponent,
+    path: 'dashboard',
+    canMatch: [
+      // CanMatchGuard,
+      (route, segments) => inject(UserPermissionsService).isAdmin$,
+    ],
+    component: AdminDashboardComponent,
   },
   {
-    path: 'users',
-    loadChildren: () => import('./feature/users/users.module').then((m) => m.UsersModule),
-  },
-  {
-    path: 'admin',
-    providers: [
-      {
-        provide: UserLoaderService,
-        useExisting: ExperimentalUserLoaderService,
+    path: 'dashboard',
+    canMatch: [
+      // CanMatchGuard,
+      (route, segments) => {
+        const router = inject(Router);
+        return inject(UserPermissionsService).isAdmin$.pipe(map((isAdmin) => !isAdmin));
       },
     ],
-    loadComponent: () => import('./feature/admin/admin.component').then((c) => c.AdminComponent),
+    component: UserDashboardComponent,
   },
+
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

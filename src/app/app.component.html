@@ -1,20 +1,7 @@
-<mat-toolbar color="primary">
-  <img class="logo" width="70" src="https://www.decodedfrontend.io/wp-content/uploads/2021/01/icon.png" alt="Decoded Frontend">
-  <span class="title">Router Features in Angular 14</span>
-  <a mat-button
-     routerLink="/"
-     routerLinkActive="active"
-     [routerLinkActiveOptions]="{ exact: true }"
-  >Home</a>
-  <a mat-button
-     routerLink="/users"
-     routerLinkActive="active"
-  >Users</a>
-  <a mat-button
-     routerLink="/admin"
-     routerLinkActive="active"
-  >Admin</a>
-</mat-toolbar>
+<header class="header">
+  <img class="logo" width="100" src="https://www.decodedfrontend.io/wp-content/uploads/2021/01/logo-01-1.png" alt="logo">
+  <span class="name">"canMatch" Guard Example</span>
+</header>
 <main class="content">
   <router-outlet></router-outlet>
 </main>
